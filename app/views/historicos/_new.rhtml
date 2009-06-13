@@ -1,0 +1,36 @@
+<div id='adv_new' style='zoom: 1;'>
+<% form_remote_tag(:url => {:action => :create}, 
+					:update=>'hh',
+					:position=>'top',
+					:loading => "javascript: Element.show('busy_new')",
+					:complete => "javascript: Element.hide('new')"
+					) do %>
+<%= hidden_field :historico, :escritorio_id %>
+
+<div class="block" style="margin-bottom:5px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Data</td>
+		<td> 
+			<%= date_field('historico', 'data') %> 
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Andamento</td>
+		<td style="padding-bottom: 7px;">
+			<%= text_area(:historico, :descr, 'cols' => 89, 'rows' => 4) %>
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class="nav_link">
+<input type="submit" value="Salvar Novo" />
+|
+<a href="javascript: void(0);" onclick="Effect.BlindUp('new');">Cancelar</a>
+<div id='busy_new' style="display: none;"><%= image_tag 'indicator.gif', :style=>'margin: 4px;' %></div>
+
+</div>
+
+<% end %>
+</div>

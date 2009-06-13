@@ -1,0 +1,195 @@
+<div class="block">
+<table cellspacing="0">
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Nome</td>
+		<td style="padding-bottom: 7px;"> <%= text_field(:escritorio, :nome, :size => 60, :maxlength => 60, :style => "font-weight:bold;") %> </td>
+	</tr>
+</table>
+</div>
+
+<div class="block_esp">
+<table cellspacing="0" width="100%">
+	<tr>
+		<td class="lbl">Especialidades</td>
+		<td>
+		<% for a in session[:areas] %>
+		  <div>
+		  <%= check_box_tag("escritorio[area_ids][]",
+                                a.id,
+                                @escritorio.areas.include?(a)) %>
+		  <%= a.nome %></div>
+		<% end %>
+		<br style="clear:both" />
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class="block_esp">
+<table cellspacing="0" width="100%">
+	<tr>
+		<td class="lbl">Classes</td>
+		<td>
+		<% for c in session[:classes] %>
+		  <div>
+		  <%= check_box_tag("escritorio[class_ids][]",
+                                c.id,
+                                @escritorio.classes.include?(c)) %>
+		  <%= c.nome %></div>
+		<% end %>
+		<br style="clear:both" />
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class="block">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">OAB</td>
+		<td> <%= text_field(:escritorio, :oab, :size => 12, :maxlength => 12) %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">CNPJ</td>
+		<td> <%= text_field(:escritorio, :cnpj, :size => 20, :maxlength => 20) %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">Endereço</td>
+		<td> <%= text_field(:escritorio, :endereco, :size => 60, :maxlength => 60) %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">Bairro</td>
+		<td> <%= text_field(:escritorio, :bairro, :size => 60, :maxlength => 60) %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">CEP</td>
+		<td> <%= text_field(:escritorio, :cep, :size => 12, :maxlength => 12) %> </td>
+	</tr>	
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Cidade/UF</td>
+		<td style="padding-bottom: 7px;">
+			<%=	collection_select(:escritorio, :cidade_id, session[:cidades], :id, :nome, { :include_blank => true }) %>
+			<%=	select(:escritorio, :uf, ['','AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']) %>
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class="block" style="float:left; width:425px; margin-right:15px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Fone 1</td>
+		<td> <%= text_field(:escritorio, :fone1, :size => 30, :maxlength => 30) %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">Fone 2</td>
+		<td> <%= text_field(:escritorio, :fone2, :size => 30, :maxlength => 30) %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Fax</td>
+		<td style="padding-bottom: 7px;"> <%= text_field(:escritorio, :fax, :size => 30, :maxlength => 30) %> </td>
+	</tr>	
+</table>
+</div>
+
+<div class="block" style="float:left;  width:425px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">e-Mail</td>
+		<td> <%= text_field(:escritorio, :email, :size => 45, :maxlength => 30) %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">Site</td>
+		<td> <%= text_field(:escritorio, :site, :size => 45, :maxlength => 45) %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Secretária</td>
+		<td style="padding-bottom: 7px;"> <%= text_field(:escritorio, :secretaria, :size => 45, :maxlength => 45) %> </td>
+	</tr>	
+</table>
+</div>
+
+<div class="block" style="float:left; width:425px; margin-right:15px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Banco</td>
+		<td> <%= text_field(:escritorio, :banco, :size => 20, :maxlength => 20) %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Agência</td>
+		<td style="padding-bottom: 7px;"> <%= text_field(:escritorio, :agencia, :size => 20, :maxlength => 20) %> </td>
+	</tr>	
+</table>
+</div>
+<div class="block" style="float:left; width:425px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Conta</td>
+		<td> <%= text_field(:escritorio, :cc, :size => 20, :maxlength => 20) %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Nominal à</td>
+		<td style="padding-bottom: 7px;"> <%= text_field(:escritorio, :nominal, :size => 45, :maxlength => 45) %> </td>
+	</tr>	
+</table>
+</div>
+
+<br style="clear: both;" />
+
+<div class="block">
+<table cellspacing="0">
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Outras Informações</td>
+		<td style="padding-bottom: 7px;">
+		<%= text_area(:escritorio, :info, 'cols' => 89, 'rows' => 7) %>
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class="block">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Avaliação</td>
+		<td>
+		<%= select(:escritorio, :avaliacao, [['',0],['Insatisfatória',1],['Regular',2],['Satisfatória',3]]) %>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px; vertical-align:top;" class="lbl">Obs</td>
+		<td style="padding-bottom: 7px;">
+		<%= text_area(:escritorio, :obs, 'cols' => 89, 'rows' => 4) %>
+		</td>
+	</tr>
+</table>
+</div>
+
+<br />
+<h2>:: Principais Valores Negociados</h2>
+
+<div class="block" style="float:left; width:425px; margin-right:15px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Honorários</td>
+		<td> <%= text_field(:escritorio, :val_honor, :size => 45, :maxlength => 45) %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Audiência</td>
+		<td style="padding-bottom: 7px;"> <%= text_field(:escritorio, :val_audiencia, :size => 45, :maxlength => 45) %> </td>
+	</tr>	
+</table>
+</div>
+<div class="block" style="float:left; width:425px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Principais Peças</td>
+		<td> <%= text_field(:escritorio, :val_pecas, :size => 45, :maxlength => 45) %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Outros</td>
+		<td style="padding-bottom: 7px;"> <%= text_field(:escritorio, :val_outras, :size => 45, :maxlength => 45) %> </td>
+	</tr>	
+</table>
+</div>
+
+<br style="clear:both" />

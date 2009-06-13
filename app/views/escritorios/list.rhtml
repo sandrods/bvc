@@ -1,0 +1,23 @@
+﻿<div id="content">
+<h2>:: Lista de Escritórios</h2>
+
+<table class="list_table" width="100%" cellspacing="0">
+  <tr>
+	  <th width="35%">Nome</td>
+	  <th width="40%">Endereço</td>
+	  <th width="25%">Cidade</td>
+  </tr>
+  
+ <% @escris.each do |o| %>
+  <tr class="<%= cycle("list_row_odd", "list_row_even") %>">
+   <td><%= link_to o.nome, :action => "edit", :id => o.id %></td>
+   <td><%= o.endereco %></td>
+   <td><%= o.cidade.nome if o.cidade != nil%></td>
+  </tr>
+ <% end %>
+</table>
+<br/>
+<div class="nav_link">
+<%= link_to("Voltar para pesquisa", :action => :search) %>
+</div>
+</div>

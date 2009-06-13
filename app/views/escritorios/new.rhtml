@@ -1,0 +1,19 @@
+<div id="content">
+<h2>:: Novo Escritório</h2>
+
+<%= error_messages_for 'escritorio' %>
+
+<% form_tag :action => :create do %>
+
+<%= render :partial=>'form' %>
+
+
+<div class="nav_link">
+<input type="submit" value="Salvar Novo" />
+|
+<%= link_to("Voltar", :action=> :list) %>
+</div>
+<% end -%>
+</div>
+
+

@@ -1,0 +1,46 @@
+<div id='hist<%=historico.id %>' style='zoom: 1;'>
+<% form_remote_tag(:url => {:action => :update, :id=> historico.id}, 
+					:update=>"hist#{historico.id}", 
+					:loading => "javascript: Element.show('busy#{historico.id}');",
+					:complete => "javascript: Element.hide('busy#{historico.id}');"
+					) do %>
+<% @historico = historico %>
+<div class="block" style="margin-bottom:5px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Data</td>
+		<td> 
+			<%= date_field('historico', 'data', @historico.id) %>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Andamento</td>
+		<td style="padding-bottom: 7px;">
+			<textarea cols="89" rows="4"><%= historico.descr %></textarea>
+		</td>
+	</tr>
+
+</table>
+</div>
+
+<div id='block<%=historico.id %>' class="nav_link">
+<input type="submit" value="Alterar" />
+|
+<%= link_to_remote 'Excluir',
+					:url => {:action => 'delete', :id=> historico.id},
+					:loading => "javascript: Element.show('busy')",
+					:complete => "javascript: Element.hide('busy'); Effect.BlindUp('hist#{historico.id}');",
+					:confirm => "Confirma Exclusão?"
+%>
+
+<% if flash["notice_#{historico.id}"] %>|<span class="notice"><%= flash["notice_#{historico.id}"] %></span><% end %>
+
+<div id='busy<%= historico.id %>' style="display: none;"><%= image_tag 'indicator.gif', :style=>'margin: 4px;' %></div>
+
+</div>
+
+<% end %>
+
+
+
+</div>

@@ -1,0 +1,56 @@
+<div id='adv_new' style='zoom: 1;'>
+<% form_remote_tag(:url => {:action => :create}, 
+					:update=> "aa",
+					:position=> :top,
+					:loading => "javascript: Element.show('busy_new')",
+					:complete => "javascript: Element.hide('new')"
+					) do %>
+<%= hidden_field :advogado, :escritorio_id %>
+
+<div class="block" style="float:left; width:470px; margin-right:15px; margin-bottom:5px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Nome</td>
+		<td> <%= text_field :advogado, :nome, :size=>45, :maxlenght=>60, :style=>'font-weight: bold;' %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">Celular</td>
+		<td> <%= text_field :advogado, :celular, :size=>25, :maxlenght=>20 %></td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">e-Mail</td>
+		<td style="padding-bottom: 7px;"> <%= text_field :advogado, :email, :size=>45, :maxlenght=>45 %></td>
+	</tr>	
+</table>
+</div>
+
+<div class="block" style="float:left; width:380px; margin-bottom:5px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">OAB</td>
+		<td> <%= text_field :advogado, :oab, :size=>45, :maxlenght=>45 %> </td>
+	</tr>
+	<tr>
+		<td class="lbl">CPF</td>
+		<td> <%= text_field :advogado, :cpf, :size=>15, :maxlenght=>15 %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">RG</td>
+		<td style="padding-bottom: 7px;"> <%= text_field :advogado, :rg, :size=>15, :maxlenght=>15 %> </td>
+	</tr>	
+</table>
+</div>
+<br style="clear:both" />
+
+<div class="nav_link">
+<input type="submit" value="Criar Novo" />
+|
+<a href="javascript: void(0);" onclick="Effect.BlindUp('new');">Cancelar</a>
+<div id='busy_new' style="display: none;"><%= image_tag 'indicator.gif', :style=>'margin: 4px;' %></div>
+
+<% if flash["notice"] %>|<span class="notice"><%= flash["notice"] %></span><% end %>
+
+</div>
+
+<% end %>
+</div>

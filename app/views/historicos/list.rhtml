@@ -1,0 +1,23 @@
+<div id="content">
+<h2>:: Histórico de Andamentos</h2>
+
+<div id='new' style='display: none; zoom: 1;'></div>
+
+<div class='nav_link'>
+<%= link_to_remote '[Incluir Novo]',
+					:update => 'new',
+					:url => {:action => 'new'},
+					:loading => "javascript: Element.show('busy')",
+					:complete => "javascript: Element.hide('busy'); Effect.BlindDown('new')"
+%>
+</div><br />
+
+<div id='hh'>
+<%= render :partial=>'historico', :collection=>@hists %>
+</div>
+
+<div id='busy' style="display: none;"><%= image_tag 'indicator.gif', :style=>'margin: 4px;' %></div>
+
+
+
+</div>

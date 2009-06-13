@@ -1,0 +1,31 @@
+.list_table {
+	border-width:1px;
+	border-style:solid;
+	border-color:#CCCCCC;
+	background-color:#F2F5F7;
+}
+.list_table td {
+	font-size:11px;
+	padding:4px;
+}
+.list_table th {
+	font-size:12px;
+	font-weight:bold;
+	text-align:left;
+	padding:3px;
+	background-color: #D9E1E6;
+}
+.list_table a {
+	text-decoration:none;
+	color:#000000;
+}
+.list_table a:hover {
+	text-decoration:underline;
+	color:#CC0000;
+}
+.list_row_odd {
+	background-color:#FFFFFF;
+}
+.list_row_even {
+	tbackground-color:#F2F5F7;
+}

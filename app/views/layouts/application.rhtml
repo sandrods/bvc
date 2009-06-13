@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>BVC</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag 'main' %>
+<%= stylesheet_link_tag 'list' %>
+<%= stylesheet_link_tag 'form', 'error' %>
+<%= javascript_include_tag 'prototype', 'effects' %>
+
+<%= stylesheet_link_tag '/cal/calendar-tas' %>
+<%= javascript_include_tag '/cal/calendar', '/cal/calendar-setup', '/cal/calendar-br' %>
+
+</head>
+
+<body class="mainBody">
+
+<div id="main">
+
+  <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	<div id="logo" align="center"> <%= image_tag 'logo_bvc.gif' %> </div>
+  </td><td valign="top" width="100%">
+	<div id="header">
+		<%= image_tag 'title2.png' %>
+	</div>
+  </td></tr></table>
+
+<%= yield %>
+
+<div id="footer">(c) 2005 Núcleo de Idéias</div>
+
+</div>
+</body>
+</html>

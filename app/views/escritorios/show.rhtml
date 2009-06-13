@@ -1,0 +1,28 @@
+<div id="content">
+<h2>:: Dados do Escritório</h2>
+
+
+<div class="block_show">
+
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Nome</td>
+		<td><%= @escritorio.nome %></td>
+	</tr>
+	<tr>
+		<td class="lbl">Endereço</td>
+		<td><%= @escritorio.endereco %></td>
+	</tr>
+	<tr>
+		<td class="lbl">Cidade</td>
+		<td><%= @escritorio.cidade.nome if @escritorio.cidade!=nil %></td>
+	</tr>
+</table>
+</div>
+
+<div class="nav_link">
+<%= link_to("Editar", :action => :edit, :id => @escritorio) %> | 
+<%= link_to("Voltar", :action => :list) %>
+</div>
+
+</div>

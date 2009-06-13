@@ -1,0 +1,61 @@
+<div id='adv<%=adv.id %>' style='zoom: 1;'>
+<% form_remote_tag(:url => {:action => :update, :id=> adv.id}, 
+					:update=>"adv#{adv.id}", 
+					:loading => "javascript: Element.show('busy#{adv.id}');",
+					:complete => "javascript: Element.hide('busy#{adv.id}');"
+					) do %>
+
+<div class="block" style="float:left; width:470px; margin-right:15px; margin-bottom:5px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Nome</td>
+		<td> <input style="font-weight: bold;" type='text' size=55 maxlenght=60 value='<%= adv.nome %>' name='advogado[nome]'/> </td>
+	</tr>
+	<tr>
+		<td class="lbl">Celular</td>
+		<td> <input type='text' size=25 maxlenght=20 value='<%= adv.celular %>' name='advogado[celular]'/> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">e-Mail</td>
+		<td style="padding-bottom: 7px;"> <input type='text' size=45 maxlenght=45 value='<%= adv.email %>' name='advogado[email]'/> </td>
+	</tr>	
+</table>
+</div>
+
+<div class="block" style="float:left; width:380px; margin-bottom:5px;">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">OAB</td>
+		<td> <input type='text' size=35 maxlenght=35 value='<%= adv.oab %>' name='advogado[oab]'/> </td>
+	</tr>
+	<tr>
+		<td class="lbl">CPF</td>
+		<td> <input type='text' size=15 maxlenght=15 value='<%= adv.cpf %>' name='advogado[cpf]'/> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">RG</td>
+		<td style="padding-bottom: 7px;"> <input type='text' size=15 maxlenght=15 value='<%= adv.rg %>' name='advogado[rg]'/> </td>
+	</tr>	
+</table>
+</div>
+<br style="clear:both" />
+
+<div id='block<%=adv.id %>' class="nav_link">
+<input type="submit" value="ALTERAR" class="button" />
+|
+<%= link_to_remote 'Excluir',
+					:url => {:action => 'delete', :id=> adv.id},
+					:loading => "javascript: Element.show('busy')",
+					:complete => "javascript: Element.hide('busy'); Effect.BlindUp('adv#{adv.id}');",
+					:confirm => "Confirma Exclusão?"
+%>
+
+<% if flash["notice_#{adv.id}"] %>|<span class="notice"><%= flash["notice_#{adv.id}"] %></span><% end %>
+
+<div id='busy<%= adv.id %>' style="display: none;"><%= image_tag 'indicator.gif', :style=>'margin: 4px;' %></div>
+
+</div>
+
+<% end %>
+
+</div>

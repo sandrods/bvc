@@ -1,0 +1,29 @@
+<div id="content">
+<h2>:: Dados do Escritório</h2>
+
+<%= error_messages_for 'escritorio' %>
+
+<% form_tag(:action => :update, :id => @escritorio) do %>
+
+<div class="nav_link">
+<input type="submit" value="Salvar" />
+|
+<%= link_to("Voltar", :action => :list) %>
+</div>
+
+<%= hidden_field(:escritorio, :id) %>
+
+<%= render :partial=>'form' %>
+
+<div class="nav_link">
+<input type="submit" value="Salvar" />
+|
+<%= link_to "Excluir", {:action => :destroy, :id=>@escritorio}, :confirm => "Confirma Exclusão?" %>
+|
+<%= link_to("Voltar", :action => :list) %>
+</div>
+
+
+<% end -%>
+
+</div>

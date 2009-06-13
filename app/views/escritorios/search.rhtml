@@ -1,0 +1,56 @@
+<div id="content">
+<h2>:: Critérios de Pesquisa</h2>
+
+<% form_tag(:action => :list_search) do %>
+
+<div class="block">
+<table cellspacing="0">
+	<tr>
+		<td class="lbl">Nome</td>
+		<td><input type="text" size="60" maxlength="60" name="pesq[nome]" /></td>
+	</tr>
+	<tr>
+		<td class="lbl">Cidade</td>
+		<td> <%= collection_select(:pesq, :cidade_id, session[:cidades], :id, :nome, { :include_blank => true }) %> </td>
+	</tr>
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">UF</td>
+		<td style="padding-bottom: 7px;"> <%= select(:pesq, :uf, ['','AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']) %></td>
+	</tr>
+</table>
+</div>
+
+<div class="block">
+<table cellspacing="0">
+	<tr>
+		<td style="padding-bottom: 7px;" class="lbl">Especialidade</td>
+		<td style="padding-bottom: 7px;"><%= collection_select(:pesq, :area, session[:areas], :id, :nome, { :include_blank => true }) %> </td>
+	</tr>
+</table>
+</div>
+
+<div class="block_esp">
+<table cellspacing="0" width="100%">
+	<tr>
+		<td class="lbl">Classes</td>
+		<td>
+		<% session[:classes].each do |c| %>
+		  <div>
+		  <%= check_box_tag("pesq[class_ids][]", c.id) %>
+		  <%= c.nome %></div>
+		<% end %>
+		<br style="clear:both" />
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class="nav_link">
+<input type="submit" value="Pesquisar" />
+|
+<%= link_to "Criar novo", :action => "new" %>
+</div>
+
+<% end %>
+</div>
+
